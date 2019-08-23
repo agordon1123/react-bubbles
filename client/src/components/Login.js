@@ -43,6 +43,7 @@ const LoginFormik = withFormik({
         .then(res => {
           console.log(res)
           localStorage.setItem('token', res.data.payload)
+          setTimeout(props.history.push('/profile'), 1000)
         })
         .catch(err => console.log(err))
   }
