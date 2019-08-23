@@ -28,21 +28,21 @@ In this project you will create a login page and request a token from the server
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] Explain what a token is used for.
+- [X] Explain what a token is used for.
 
-  Answer: 
+    Answer: A token is used to authenticate the user and allow them to receieve specific information that is granted to them. 
 
-- [ ] What steps can you take in your web apps to keep your data secure?
+- [X] What steps can you take in your web apps to keep your data secure?
 
-  Answer: 
+    Answer: To keep our data secure, we can use authentication to ensure the user has access to the requested information or data transfer.
 
-- [ ] Describe how web servers work.
+- [X] Describe how web servers work.
 
-  Answer:
+    Answer: Web servers work by taking in a request, checking to see if that request is authorized, and returning the appropriate information regarding the request. 
 
-- [ ] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+- [X] Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
 
-  Answer: 
+    Answer: Post, Get, Put, Delete are all mothods for interfacing with APIs/Servers.
 
 
 
@@ -65,8 +65,8 @@ Follow these steps to set up and work on your project:
 
 Follow these steps for completing your project:
 
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
-- [ ] Add your Project Manager as a Reviewer on the Pull-request
+- [X] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
+- [X] Add your Project Manager as a Reviewer on the Pull-request
 - [ ] PM then will count the HW as done by  merging the branch back into master.
 
 ## Minimum Viable Product
@@ -85,8 +85,8 @@ Build a login form to authenticate your users.
 ### Stage 2 - Consuming the API
 
 - [X] When `BubblePages` renders, make a GET request to fetch the color data for your bubbles.
-- [ ] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
-- [ ] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
+- [X] In `ColorList.js`, complete the `saveEdit` and `deleteColor` functions to make AJAX requests to the API to edit/delete data
+- [X] Watch and enjoy as your app responds to updates in the data. Check out `Bubbles.js` to see how this is built.
 
 ### API Documentation
 

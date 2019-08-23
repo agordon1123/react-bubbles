@@ -37,7 +37,6 @@ const LoginFormik = withFormik({
   },
 
   handleSubmit(values, { props }) {
-    console.log(values)
     Axios
     .post('http://localhost:5000/api/login', values)
         .then(res => {
