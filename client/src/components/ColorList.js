@@ -7,9 +7,12 @@ const initialColor = {
   code: { hex: "" }
 };
 
-const ColorList = ({ colors, updateColors, fetchMovies }) => {
+const ColorList = ({ colors, updateColors, fetchColors }) => {
   const [editing, setEditing] = useState(false);
+  const [adding, setAdding] = useState(false);
   const [colorToEdit, setColorToEdit] = useState(initialColor);
+  const [colorToAdd, setColorToAdd] = useState(initialColor);
+  console.log(colorToAdd)
 
   const editColor = color => {
     setEditing(true);
@@ -26,8 +29,25 @@ const ColorList = ({ colors, updateColors, fetchMovies }) => {
       .then(res => {
         console.log(res)
         updateColors([...colors])
-        fetchMovies()
+        fetchColors()
         setEditing(false)
+      })
+      .catch(err => console.log(err))
+  };
+
+  const setAddColor = () => {
+    setAdding(true);
+  }
+
+  const addColor = e => {
+    console.log(colorToAdd);
+    e.preventDefault();
+    axiosWithAuth()
+      .post('http://localhost:5000/api/colors', colorToAdd)
+      .then(res => {
+        console.log(res);
+        fetchColors();
+        setAdding(false)
       })
       .catch(err => console.log(err))
   };
@@ -38,10 +58,10 @@ const ColorList = ({ colors, updateColors, fetchMovies }) => {
     .delete(`http://localhost:5000/api/colors/${color.id}`)
     .then(res => {
       console.log(res)
-      fetchMovies()
+      fetchColors()
       setEditing(false)
-      })
-      .catch(err => console.log(err))
+    })
+    .catch(err => console.log(err))
   };
 
   return (
@@ -64,6 +84,7 @@ const ColorList = ({ colors, updateColors, fetchMovies }) => {
             />
           </li>
         ))}
+        <li className='add' onClick={() => setAdding(true)}>Add new</li>
       </ul>
       {editing && (
         <form onSubmit={saveEdit}>
@@ -80,6 +101,7 @@ const ColorList = ({ colors, updateColors, fetchMovies }) => {
           <label>
             hex code:
             <input
+              type='color'
               onChange={e =>
                 setColorToEdit({
                   ...colorToEdit,
@@ -95,8 +117,40 @@ const ColorList = ({ colors, updateColors, fetchMovies }) => {
           </div>
         </form>
       )}
-      <div className="spacer" />
       {/* stretch - build another form here to add a color */}
+      {adding && (
+        <form onSubmit={addColor}>
+          <legend>add color</legend>
+          <label>
+            color name:
+            <input
+              type='text'
+              onChange={e =>
+                setColorToAdd({ ...colorToAdd, color: e.target.value })
+              }
+              value={colorToAdd.color}
+            />
+          </label>
+          <label>
+            hex code:
+            <input
+              type='color'
+              onChange={e =>
+                setColorToAdd({
+                  ...colorToAdd,
+                  code: { hex: e.target.value }
+                })
+              }
+              value={colorToAdd.code.hex}
+            />
+          </label>
+          <div className="button-row">
+            <button type="submit">add</button>
+            <button onClick={() => setAdding(false)}>cancel</button>
+          </div>
+        </form>
+      )}
+      <div className="spacer" />
     </div>
   );
 };
